@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.winter.yubin.pager.Pager;
+import com.winter.yubin.file.FileDTO;
 
 public interface BoardService {
 	
@@ -20,7 +21,6 @@ public interface BoardService {
 	
 	//D - delete
 	public int delete(BoardDTO boardDTO)throws Exception;
-	
-	public 
+	public FileDTO fileDetail(FileDTO fileDTO)throws Exception;
 
 }

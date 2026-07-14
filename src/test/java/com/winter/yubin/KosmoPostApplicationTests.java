@@ -19,17 +19,18 @@ class KosmoPostApplicationTests {
     }
 
     @Test
-    void testReviewService() {
+    void testReviewService() throws Exception {
         // 1. Given: 테스트할 데이터 준비
         ReviewDTO dto = new ReviewDTO();
-        dto.setBno(1);
-        dto.setContent("테스트 리뷰입니다.");
-        dto.setWriter("yubin");
+        dto.setProductNum(1L);
+        dto.setReviewContents("테스트 리뷰입니다.");
+        dto.setUsername("yubin");
+        dto.setReviewStar(5L);
 
         // 2. When: 실제 기능 실행
-        boolean result = reviewService.register(dto);
+        int result = reviewService.create(dto);
 
-        // 3. Then: 결과 검증 (결과가 true여야 성공)
-        assertThat(result).isTrue();
+        // 3. Then: 결과 검증
+        assertThat(result).isEqualTo(1);
     }
 }

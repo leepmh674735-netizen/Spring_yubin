@@ -91,7 +91,10 @@ public class QnaService implements BoardService {
 		int result = qnaMapper.delete(boardDTO);
 		return result;
 	}
-	
-	
+
+	@Override
+	public FileDTO fileDetail(FileDTO fileDTO) throws Exception {
+		return qnaMapper.fileDetail(fileDTO);
+	}
 
 }

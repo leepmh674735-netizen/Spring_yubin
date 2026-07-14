@@ -9,7 +9,7 @@ import com.winter.yubin.product.ProductDTO; // 패키지 경로 확인 필요
 public interface CartMapper {
     
     // 장바구니 삭제
-    public int delete(CartDTO cartDTO) throws Exception;
+    public int delete(List<CartDTO> list) throws Exception;
     
     // 장바구니 추가
     public int create(CartDTO cartDTO) throws Exception;

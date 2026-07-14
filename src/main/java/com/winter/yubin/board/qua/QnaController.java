@@ -84,6 +84,10 @@ public class QnaController {
 		return "redirect:./list";
 	}
 	@GetMapping("down")
-	public String fileDown(FileDTO fileDTO, Model moel
+	public String fileDown(FileDTO fileDTO, Model model)throws Exception{
+		fileDTO = qnaService.fileDetail(fileDTO);
+		model.addAttribute("fileDTO", fileDTO);
+		return "fileDownView";
+	}
 
 }
