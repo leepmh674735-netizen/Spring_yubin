@@ -16,22 +16,23 @@
         font-family: 'Outfit', 'Jua', 'Nunito', sans-serif !important;
         background-color: #fff0f3;
         transition: all 0.3s ease;
+        overflow-x: hidden;
     }
     
-    /* Cute Gradient Sidebar */
+    /* Moving Rainbow Gradient Sidebar */
     .bg-gradient-primary {
-        background: linear-gradient(135deg, #ff85a2 0%, #f7aef8 100%) !important;
-        background-size: 200% 200% !important;
-        animation: gradientBG 8s ease infinite !important;
+        background: linear-gradient(45deg, #ff85a2, #f7aef8, #b3e5fc, #c8e6c9, #ffe082, #ff8a65, #ff85a2) !important;
+        background-size: 400% 400% !important;
+        animation: rainbowBG 15s ease infinite !important;
     }
 
-    @keyframes gradientBG {
+    @keyframes rainbowBG {
         0% { background-position: 0% 50%; }
         50% { background-position: 100% 50%; }
         100% { background-position: 0% 50%; }
     }
 
-    /* Premium Neumorphic / Cute Cards */
+    /* Premium Rainbow/Cute Cards */
     .card {
         border: 3px solid #ffccd5 !important;
         border-radius: 24px !important;
@@ -43,8 +44,15 @@
 
     .card:hover {
         transform: translateY(-8px) scale(1.015) !important;
-        box-shadow: 0 18px 40px rgba(255, 133, 162, 0.22) !important;
+        box-shadow: 0 18px 40px rgba(255, 133, 162, 0.25) !important;
         border-color: #ff85a2 !important;
+        animation: borderPulse 2s infinite;
+    }
+
+    @keyframes borderPulse {
+        0% { border-color: #ff85a2; }
+        50% { border-color: #f7aef8; }
+        100% { border-color: #ff85a2; }
     }
 
     .card-header {
@@ -65,14 +73,13 @@
     }
 
     .btn-primary {
-        background-color: #ff85a2 !important;
+        background: linear-gradient(135deg, #ff85a2 0%, #f7aef8 100%) !important;
         border: 2px solid #ffccd5 !important;
         color: white !important;
         box-shadow: 0 6px 20px rgba(255, 133, 162, 0.3) !important;
     }
 
     .btn-primary:hover {
-        background-color: #ff477e !important;
         transform: translateY(-4px) scale(1.05) !important;
         box-shadow: 0 10px 25px rgba(255, 133, 162, 0.5) !important;
     }
@@ -100,12 +107,20 @@
         border-bottom: 3px solid #fff0f3;
     }
 
-    /* Custom sidebar brand style */
+    /* Custom sidebar brand style with Rainbow Text */
     .sidebar-brand-text {
         font-family: 'Fredoka One', sans-serif !important;
         font-size: 1.3rem !important;
-        color: #ffffff !important;
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(to right, #ffffff, #ffe082, #ffccd5, #ffffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% auto;
+        animation: rainbowText 4s linear infinite;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    @keyframes rainbowText {
+        to { background-position: 200% center; }
     }
 
     /* Floating Chibi Mascot in Bottom-Right Corner */
@@ -134,6 +149,56 @@
         100% { transform: translateY(0px) rotate(0deg); }
     }
 
+    /* Speech Bubble Style for Mascot */
+    .mascot-bubble {
+        position: fixed;
+        bottom: 180px;
+        right: 35px;
+        background: white;
+        border: 3px solid #ff85a2;
+        border-radius: 20px;
+        padding: 10px 15px;
+        font-family: 'Jua', sans-serif !important;
+        font-size: 0.95rem;
+        color: #ff477e;
+        box-shadow: 0 8px 20px rgba(255, 133, 162, 0.2);
+        z-index: 10000;
+        animation: bubbleFloat 4s ease-in-out infinite;
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+
+    .mascot-bubble::after {
+        content: "";
+        position: absolute;
+        bottom: -13px;
+        right: 40px;
+        border-width: 13px 13px 0;
+        border-style: solid;
+        border-color: white transparent;
+        display: block;
+        width: 0;
+    }
+
+    .mascot-bubble::before {
+        content: "";
+        position: absolute;
+        bottom: -17px;
+        right: 38px;
+        border-width: 15px 15px 0;
+        border-style: solid;
+        border-color: #ff85a2 transparent;
+        display: block;
+        width: 0;
+        z-index: -1;
+    }
+
+    @keyframes bubbleFloat {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+        100% { transform: translateY(0px); }
+    }
+
     /* Cute Header Banner at top of container-fluid */
     .container-fluid::before {
         content: "";
@@ -146,6 +211,24 @@
         margin-bottom: 30px;
         box-shadow: 0 10px 25px rgba(255, 133, 162, 0.15);
         border: 3px solid #ffccd5;
+    }
+
+    /* Floating Rainbow Sparkles in Background */
+    .sparkle {
+        position: fixed;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+        animation: floatSparkle 12s linear infinite;
+    }
+
+    @keyframes floatSparkle {
+        0% { transform: translateY(110vh) scale(0); opacity: 0; }
+        10% { opacity: 0.6; }
+        90% { opacity: 0.6; }
+        100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
     }
 
     /* Custom Cute Scrollbar */
@@ -171,11 +254,44 @@
         mascot.src = "/images/cute_mascot.png";
         mascot.className = "floating-mascot";
         mascot.alt = "Mascot Sticker";
+        
+        // Create bubble element
+        const bubble = document.createElement("div");
+        bubble.className = "mascot-bubble";
+        bubble.innerText = "환영해요! 🌈";
+        
+        document.body.appendChild(mascot);
+        document.body.appendChild(bubble);
+
+        // Bubble sayings configuration
+        const sayings = [
+            "오늘도 화이팅! ⭐",
+            "무지개 나라로 오세요! 🌈",
+            "기분 좋은 하루 되세요! 🌸",
+            "메뉴를 눌러보세요! ✨",
+            "눌러줘서 고마워요! 💕",
+            "반가워요! 🐾"
+        ];
+
         mascot.onclick = function() {
             // Playful bounce effect when clicked
             mascot.style.transform = "scale(1.45) translateY(-25px) rotate(15deg)";
+            const randomSaying = sayings[Math.floor(Math.random() * sayings.length)];
+            bubble.innerText = randomSaying;
             setTimeout(() => { mascot.style.transform = ""; }, 400);
         };
-        document.body.appendChild(mascot);
+
+        // Generate colorful background sparkles
+        const colors = ['#ff85a2', '#f7aef8', '#b3e5fc', '#c8e6c9', '#ffe082', '#ff8a65'];
+        for (let i = 0; i < 15; i++) {
+            const sparkle = document.createElement("div");
+            sparkle.className = "sparkle";
+            sparkle.style.left = Math.random() * 100 + "vw";
+            sparkle.style.animationDelay = Math.random() * 10 + "s";
+            sparkle.style.animationDuration = (Math.random() * 8 + 8) + "s";
+            sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            sparkle.style.opacity = Math.random() * 0.4 + 0.2;
+            document.body.appendChild(sparkle);
+        }
     });
 </script>
