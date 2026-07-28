@@ -8,6 +8,10 @@
 
 ![Homepage Preview](homepage_preview.png)
 
+## 🎬 홈페이지 애니메이션 작동 영상 (Walkthrough GIF)
+
+![Homepage Walkthrough](homepage_preview.gif)
+
 ---
 
 ## ✨ 테마 특징 (Cute Features)
